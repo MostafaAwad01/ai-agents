@@ -146,6 +146,7 @@ class database:
         columns = list(rows[0].keys())
         placeholders = ', '.join(['?' for _ in columns])
         column_names = ', '.join(columns)
+        print(table, columns);
         sql = f"INSERT OR IGNORE INTO {table} ({column_names}) VALUES ({placeholders})"
 
         # Convert "NULL" strings from CSV into Python None values
