@@ -1,0 +1,3 @@
+"inst_id","type","name","department","address","city","state", "zip"
+"1","Academia","Azhar University Gaza (AUG)","computer science",NULL,"Gaza","Gaza Strip",NULL
+"2","Academia","Amideast/Gaza",NULL,NULL,"Deir AlBalah","Gaza Strip",NULL
