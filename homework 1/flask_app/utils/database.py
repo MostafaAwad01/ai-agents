@@ -306,3 +306,4 @@ class database:
                         lines.append(f"      Skill: {skill['name']} (level {skill['skill_level']}/10)")
 
         return '\n'.join(lines)
+

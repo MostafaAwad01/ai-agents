@@ -15,7 +15,7 @@ This guide gives you working code for every piece — your job is to follow alon
 
 ---
 
-## How It Works
+## How It Works 
 
 ```
 You (browser)

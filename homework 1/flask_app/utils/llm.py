@@ -209,7 +209,7 @@ def execute_write_action(db, generated_code):
     except Exception as error:
         print(f"Write Expert code failed: {error}")
         return "Operation was unsuccessful."
-    return local_vars.get("outcome", "Operation was unsuccessful.")
+    return local_vars.get("outcome", "Operatison was unsuccessful.")
 
 def run_orchestrator_plan(db, original_request, plan_text):
     """
@@ -224,14 +224,30 @@ def run_orchestrator_plan(db, original_request, plan_text):
         return "Sorry, I couldn't plan a response to that."
 
     results = []
+
     for call_string in call_strings:
         print(f"[Orchestrator] executing: {call_string}")
-        match = re.search(r'role="([^"]*)",\s*message="([^"]*)"', call_string)
-        role, message = match.group(1), match.group(2)
+
+        match = re.search(
+            r"""role=(["'])(.*?)\1,\s*message=(["'])(.*?)\3""",
+            call_string
+        )
+
+        if not match:
+            print(f"[Orchestrator] Could not parse call: {call_string}")
+            return "Sorry, I couldn't process the expert request."
+
+        role = match.group(2)
+        message = match.group(4)
+
         response = handle_ai_chat_request(db, role, message)
+
         results.append((role, message, response))
 
-    steps_summary = "\n".join(f"{r}: {resp}" for r, m, resp in results)
+    steps_summary = "\n".join(
+        f"{r}: {resp}" for r, m, resp in results
+    )
+
     synthesis_prompt = (
         f'The user asked: "{original_request}"\n\n'
         f"Here is what each expert found or did:\n{steps_summary}\n\n"
@@ -242,4 +258,5 @@ def run_orchestrator_plan(db, original_request, plan_text):
         "other results in plain language. Never mention SQL, Python, code, "
         "or these internal steps."
     )
+
     return send_message(original_request, synthesis_prompt)
