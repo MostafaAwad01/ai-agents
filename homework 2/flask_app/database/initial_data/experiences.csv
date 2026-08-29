@@ -1,0 +1,7 @@
+"experience_id","position_id","name","description","hyperlink","start_date","end_date"
+"1","1","Fundamentals of Programming","I learned the basics of Programming",NULL,NULL,"2026-01-01"
+"2","1","Networking","I learned the basics of networking such as IP Address, DNS and others.",NULL,NULL,"2026-01-01"
+"3","1","Information Security","I learned the basics of security such as Cryptography, Web Security, Network Security",NULL,NULL,"2026-01-01"
+"4","2","Presentation skills","It helped me overcome the fear of standing in front of a group and explaining my ideas in English",NULL,NULL,"2026-01-01"
+"5","2","Teamwork skills","It helped me improve my communication with teammates through working on a shared project",NULL,NULL,"2026-01-01"
+"6","2","Debate Skills","It helped me debate effectively and explain my point of view and strengthening it with proofs",NULL,NULL,"2026-01-01"
